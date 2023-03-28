@@ -11,7 +11,7 @@ import {
   } from '@mantine/core';
   import { useDisclosure } from '@mantine/hooks';
   import { IconChevronDown } from '@tabler/icons-react';
-  import { MantineLogo } from '@mantine/ds';
+  import logo from './logo.png';
   
   const HEADER_HEIGHT = rem(60);
   
@@ -42,7 +42,7 @@ import {
       borderRadius: theme.radius.sm,
       textDecoration: 'none',
       color: theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.colors.gray[7],
-      fontSize: theme.fontSizes.sm,
+      fontSize: theme.fontSizes.lg,
       fontWeight: 500,
   
       '&:hover': {
@@ -70,7 +70,7 @@ import {
               <a
                 href={link.link}
                 className={classes.link}
-                onClick={(event) => event.preventDefault()}
+                onClick={()=> window.open(link.link, "_blank")}
               >
                 <Center>
                   <span className={classes.linkLabel}>{link.label}</span>
@@ -88,7 +88,7 @@ import {
           key={link.label}
           href={link.link}
           className={classes.link}
-          onClick={(event) => event.preventDefault()}
+          onClick={()=> window.open(link.link, "_blank")}
         >
           {link.label}
         </a>
@@ -100,14 +100,15 @@ import {
         <Container className={classes.inner} fluid>
           <Group>
             {<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />}
-            <img src=""></img>
+            <img src={logo} alt="Logo" width={55} />
             {/* <MantineLogo size={28} /> */}
           </Group>
           <Group spacing={5} className={classes.links}>
             {items}
           </Group>
-          <Button radius="xl" h={30}>
-            Get early access
+          <Button variant="gradient"
+            gradient={{ from: '#F73761', to: '#F73761' }} radius="xl" h={30}>
+            Log In
           </Button>
         </Container>
       </Header>
