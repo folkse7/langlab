@@ -5,7 +5,8 @@ import WordBanks from './components/wordbanks';
 export default function App() {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS>
-        <Homepage></Homepage>
+        {/* <Homepage></Homepage> */}
+        <WordBanks></WordBanks>
     </MantineProvider>
   );
 }

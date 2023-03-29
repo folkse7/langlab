@@ -38,23 +38,23 @@ import {
   const features = [
     {
       icon: IconReceiptOff,
-      title: 'Free and open source',
+      title: 'Theme Specific Word Banks',
       description: 'All packages are published under MIT license, you can use Mantine in any project',
     },
     {
       icon: IconFileCode,
-      title: 'TypeScript based',
+      title: 'Latest Past Papers',
       description: 'Build type safe applications, all components and hooks export types',
     },
     {
       icon: IconCircleDotted,
-      title: 'No annoying focus ring',
+      title: 'Exam Guides',
       description:
         'With new :focus-visible selector focus ring will appear only when user navigates with keyboard',
     },
     {
       icon: IconFlame,
-      title: 'Flexible',
+      title: 'Test Yourself',
       description:
         'Customize colors, spacing, shadows, fonts and many other settings with global theme object',
     },
@@ -90,8 +90,8 @@ import {
               Features
             </Title>
             <Text className={classes.pad} c="dimmed">
-            Build fully functional accessible web applications faster than ever – Mantine includes
-            more than 120 customizable components and hooks to cover you in any situation
+            IB LanguageLab is equipped with all the features you need to score a 7 
+            on your IB Language Acquisition examinations.
           </Text>
   
             {/* <Button

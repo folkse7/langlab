@@ -21,6 +21,8 @@ import {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
+      marginBottom: 0,
+      paddingBottom: 0,
     },
   
     links: {
