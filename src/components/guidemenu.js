@@ -35,10 +35,10 @@ const useStyles = createStyles((theme) => ({
   },
 
 }));
-export function ContainedInputs() {
+export function GuideInputs() {
   const [lang, setLang] = useState();
   const [level, setLevel] = useState();
-  const [theme, setTheme] = useState();
+  const [paper, setPaper] = useState();
   const { classes } = useStyles();
   return (
     <div>
@@ -50,7 +50,7 @@ export function ContainedInputs() {
         align="center"
         className={classes.title}
       >
-        Select a language, level, and theme to generate the corresponding wordbank:
+        Select a language, level, and paper to get exam resources:
       </Title>
     <Grid>
     <Grid.Col span={3}></Grid.Col>
@@ -71,18 +71,18 @@ export function ContainedInputs() {
       </select>
       </Grid.Col>
       <Grid.Col span={2}>
-      <select id="theme" defaultValue="Select theme"
-              onChange={(e) => setTheme(e.target.value)}>
-        <option value="1">Select Theme</option>
-        <option value="Idenitites">Idenitites</option>
-        <option value="Experiences">Experiences</option>
-        <option value="Human Ingenuity">Human Ingenuity</option>
-        <option value="Social Organization">Social Organization</option>
-        <option value="Sharing the Planet">Sharing the Planet</option>
+      <select id="theme" defaultValue="Select paper"
+              onChange={(e) => setPaper(e.target.value)}>
+        <option value="1">Select Paper</option>
+        <option value="Audio">Audio Comprehension</option>
+        <option value="Writing">Writing</option>
+        <option value="Reading">Reading Comprehension</option>
+        <option value="Oral">Oral</option>
+
       </select>
       </Grid.Col>
       </Grid>
-      <h3>You selected: {lang}, {level}, and {theme}</h3>
+      <h3>You selected: {lang}, {level}, and {paper}</h3>
     </div>
   );
 }
