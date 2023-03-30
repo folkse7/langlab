@@ -69,7 +69,7 @@ export function HeroTitle() {
   const { classes } = useStyles();
 
   return (
-    <div className={classes.wrapper}>
+    <div className={classes.wrapper} style={{marginTop: "7.5rem"}}>
       <Container size={700} className={classes.inner}>
         <h1 className={classes.title}>
           The First{' '}
