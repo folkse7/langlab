@@ -100,7 +100,7 @@ import { useNavigate } from 'react-router-dom';
     });
   
     return (
-      <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0 }} mb={120}>
+      <Header height={HEADER_HEIGHT} sx={{ borderBottom: 0, marginBottom: "0 !important" }} mb={120}>
         <Container className={classes.inner} fluid>
           <Group>
             {<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />}
