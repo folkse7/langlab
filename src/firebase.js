@@ -7,6 +7,10 @@ import {
   signInWithPopup,
   onAuthStateChanged,
 } from "firebase/auth";
+
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+// Initiate the db
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -25,6 +29,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+export const db = getFirestore(app);
 
 export const auth = getAuth(app);
 
@@ -37,4 +42,11 @@ export const signInWithGoogle = () => {
       // ...
     })
     .catch((error) => {});
+};
+
+export const executeQuery = (languageName, levelValue, themeValue, subThemeValue) => {
+  // Query in the languageName collection for all words with the levelValue, themeValue and subThemeValue
+  const query = db.collection(languageName).where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
+  const querySnapshot = getDocs(query);
+  return querySnapshot;
 };
