@@ -8,8 +8,7 @@ import { FeaturesTitle } from './features';
 export default function Homepage() {
   return (
       <>
-      <HeaderAction links={[{ link: "Wordbanks.js", label: "Word Banks" }, { link: "https://google.com", label: "Exam Guides" }, { link: "https://google.com", label: "Past Papers" }]}> </HeaderAction>
-      <HeroTitle></HeroTitle>
+<HeaderAction links={[{ link: "wordbanks", label: "Word Banks" }, { link: "guides", label: "Exam Guides" }, { link: "pastpapers", label: "Past Papers" }]}> </HeaderAction>      <HeroTitle></HeroTitle>
       <FeaturesTitle></FeaturesTitle>
       <OurStory></OurStory>
       <GetInTouchSimple></GetInTouchSimple>

@@ -11,6 +11,7 @@ import {
   } from '@mantine/core';
   import { useDisclosure } from '@mantine/hooks';
   import { IconChevronDown } from '@tabler/icons-react';
+import { useNavigate } from 'react-router-dom';
   import logo from './logo.png';
   
   const HEADER_HEIGHT = rem(60);
@@ -58,6 +59,7 @@ import {
   }));
   
   export function HeaderAction({ links }) {
+    const navigate = useNavigate()
     const { classes } = useStyles();
     const [opened, { toggle }] = useDisclosure(false);
     const items = links.map((link) => {
@@ -72,8 +74,8 @@ import {
               <a
                 href={link.link}
                 className={classes.link}
-                onClick={()=> window.open(link.link, "_blank")}
-              >
+                // onClick={()=> navigate("/"+link.link)}              
+                >
                 <Center>
                   <span className={classes.linkLabel}>{link.label}</span>
                   <IconChevronDown size={rem(12)} stroke={1.5} />
@@ -90,7 +92,7 @@ import {
           key={link.label}
           href={link.link}
           className={classes.link}
-          onClick={()=> window.open(link.link, "_blank")}
+          // onClick={()=> navigate("/"+link.link)}
         >
           {link.label}
         </a>
@@ -102,7 +104,10 @@ import {
         <Container className={classes.inner} fluid>
           <Group>
             {<Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />}
-            <img src={logo} alt="Logo" width={55} />
+            <img src={logo} alt="Logo" width={55} 
+            style={{cursor: "pointer"}}
+            onClick={()=> navigate("/")}
+            />
             {/* <MantineLogo size={28} /> */}
           </Group>
           <Group spacing={5} className={classes.links}>
