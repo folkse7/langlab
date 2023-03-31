@@ -19,6 +19,10 @@ const useStyles = createStyles((theme) => ({
     zIndex: 1,
   },
  
+  pad: {
+     marginBottom: 80,
+  },
+
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: rem(30),
@@ -35,7 +39,7 @@ const useStyles = createStyles((theme) => ({
   },
 
 }));
-export function GuideInputs() {
+export function PaperMenu() {
   const [lang, setLang] = useState();
   const [level, setLevel] = useState();
   const [paper, setPaper] = useState();
@@ -56,7 +60,8 @@ export function GuideInputs() {
     <Grid.Col span={3}></Grid.Col>
     <Grid.Col span={2}>
       <select id="language" defaultValue="Select language"
-              onChange={(e) => setLang(e.target.value)}>
+              onChange={(e) => setLang(e.target.value)}
+              className={classes.pad}>
         <option value="1">Select Language</option>
         <option value="French">French</option>
         <option value="Spanish">Spanish</option>
@@ -64,7 +69,8 @@ export function GuideInputs() {
       </Grid.Col>
       <Grid.Col span={2}>
       <select id="level" defaultValue="Select level"
-              onChange={(e) => setLevel(e.target.value)}>
+              onChange={(e) => setLevel(e.target.value)}
+              className={classes.pad}>
         <option value="1">Select Level</option>
         <option value="Standard Level">Standard Level</option>
         <option value="Ab Initio">Ab Initio</option>
@@ -72,7 +78,8 @@ export function GuideInputs() {
       </Grid.Col>
       <Grid.Col span={2}>
       <select id="theme" defaultValue="Select paper"
-              onChange={(e) => setPaper(e.target.value)}>
+              onChange={(e) => setPaper(e.target.value)}
+              className={classes.pad}>
         <option value="1">Select Paper</option>
         <option value="Audio">Audio Comprehension</option>
         <option value="Writing">Writing</option>

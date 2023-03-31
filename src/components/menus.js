@@ -82,7 +82,7 @@ export function ContainedInputs() {
       </select>
       </Grid.Col>
       </Grid>
-      <h3>You selected: {lang}, {level}, and {theme}</h3>
+      {/* <h3>You selected: {lang}, {level}, and {theme}</h3> */}
     </div>
   );
 }
