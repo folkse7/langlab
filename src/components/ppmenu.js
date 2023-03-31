@@ -84,8 +84,6 @@ export function PaperMenu() {
         <option value="Audio">Audio Comprehension</option>
         <option value="Writing">Writing</option>
         <option value="Reading">Reading Comprehension</option>
-        <option value="Oral">Oral</option>
-
       </select>
       </Grid.Col>
       </Grid>
