@@ -44,9 +44,9 @@ export const signInWithGoogle = () => {
     .catch((error) => {});
 };
 
-export const executeQuery = (languageName, levelValue, themeValue, subThemeValue) => {
-  // Query in the languageName collection for all words with the levelValue, themeValue and subThemeValue
-  const query = db.collection(languageName).where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
+export const executeQuery = (maincollection, languageName, levelValue, themeValue, subThemeValue) => {
+  // Query in the languageName collection(a sub collection of maincollection) for all words with the levelValue, themeValue and subThemeValue
+  const query = collection(db, maincollection, languageName).where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
   const querySnapshot = getDocs(query);
   return querySnapshot;
 };
