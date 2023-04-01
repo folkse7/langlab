@@ -46,7 +46,7 @@ export const signInWithGoogle = () => {
 
 export const executeQuery = (maincollection, languageName, levelValue, themeValue, subThemeValue) => {
   // Query in the languageName collection(a sub collection of maincollection) for all words with the levelValue, themeValue and subThemeValue
-  const query = collection(db, maincollection, languageName).where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
+  const query = collection(db, maincollection, languageName, "words").where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
   const querySnapshot = getDocs(query);
   return querySnapshot;
 };
