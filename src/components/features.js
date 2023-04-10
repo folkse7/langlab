@@ -9,7 +9,7 @@ import {
     Col,
     rem,
   } from '@mantine/core';
-  import { IconReceiptOff, IconFlame, IconCircleDotted, IconFileCode } from '@tabler/icons-react';
+  import { IconVocabulary, IconAB2, IconCertificate, IconFileDescription } from '@tabler/icons-react';
   
   const useStyles = createStyles((theme) => ({
     wrapper: {
@@ -37,23 +37,23 @@ import {
   
   const features = [
     {
-      icon: IconReceiptOff,
+      icon: IconVocabulary,
       title: 'Theme Specific Word Banks',
       description: 'All packages are published under MIT license, you can use Mantine in any project',
     },
     {
-      icon: IconFileCode,
+      icon: IconFileDescription,
       title: 'Latest Past Papers',
       description: 'Build type safe applications, all components and hooks export types',
     },
     {
-      icon: IconCircleDotted,
+      icon: IconCertificate,
       title: 'Exam Guides',
       description:
         'With new :focus-visible selector focus ring will appear only when user navigates with keyboard',
     },
     {
-      icon: IconFlame,
+      icon: IconAB2,
       title: 'Test Yourself',
       description:
         'Customize colors, spacing, shadows, fonts and many other settings with global theme object',
