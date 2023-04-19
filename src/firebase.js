@@ -8,7 +8,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, collection, getDocs } from "firebase/firestore";
+import { getFirestore, query, collection, getDocs, where } from "firebase/firestore";
 // Initiate the db
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -44,9 +44,33 @@ export const signInWithGoogle = () => {
     .catch((error) => {});
 };
 
-export const executeQuery = (maincollection, languageName, levelValue, themeValue, subThemeValue) => {
+export const executeQuery = async(languageName, levelValue, themeValue) => {
+  console.log(languageName, levelValue, themeValue)
   // Query in the languageName collection(a sub collection of maincollection) for all words with the levelValue, themeValue and subThemeValue
-  const query = collection(db, maincollection, languageName, "words").where("Level", "==", levelValue).where("Theme", "==", themeValue).where("STheme", "==", subThemeValue);
-  const querySnapshot = getDocs(query);
-  return querySnapshot;
+  // collection(db, "wordbanks", "spanish", "words").where("level", "==", levelValue).where("theme", "==", themeValue).where("subtheme", "==", subThemeValue).get().then(
+  //   (querySnapshot) => {
+  //     querySnapshot.forEach((doc) => {
+  //       console.log(doc.id, " => ", doc.data());
+  //     });
+  //   }
+  // )
+  const q = query(collection(db, "wordbanks", languageName, "words"), where("level", "==", levelValue), where("theme", "==", themeValue));
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+  });
+
+
+  // where("level", "==", levelValue).where("theme", "==", themeValue).where("subtheme", "==", subThemeValue);
+
+
+
+  // const querySnapshot = getDocs(query);
+  // (await querySnapshot).forEach((doc) => {
+  //   // doc.data() is never undefined for query doc snapshots
+  //   console.log(doc.id, " => ", doc.data());
+  // });
+
+
+  // return querySnapshot;
 };

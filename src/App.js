@@ -3,7 +3,7 @@ import Homepage from "./components/homepage";
 import WordBanks from "./components/wordbanks";
 import Guides from "./components/guides";
 import PastPaper from "./components/pastpaper";
-import { HashRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 export default function App() {
   return (

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import {executeQuery} from "../firebase";
 import { createStyles, rem, Select, Grid, Title } from '@mantine/core';
 const useStyles = createStyles((theme) => ({
   root: {
@@ -39,6 +40,11 @@ export function ContainedInputs() {
   const [lang, setLang] = useState();
   const [level, setLevel] = useState();
   const [theme, setTheme] = useState();
+
+  // Use effect
+  useEffect(() => {
+    executeQuery(lang, level, theme);
+  }, [lang, level, theme]);
   const { classes } = useStyles();
   return (
     <div>
@@ -74,7 +80,7 @@ export function ContainedInputs() {
       <select id="theme" defaultValue="Select theme"
               onChange={(e) => setTheme(e.target.value)}>
         <option value="1">Select Theme</option>
-        <option value="Idenitites">Idenitites</option>
+        <option value="Idenitites">Identites</option>
         <option value="Experiences">Experiences</option>
         <option value="Human Ingenuity">Human Ingenuity</option>
         <option value="Social Organization">Social Organization</option>
