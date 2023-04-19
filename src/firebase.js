@@ -54,11 +54,13 @@ export const executeQuery = async(languageName, levelValue, themeValue) => {
   //     });
   //   }
   // )
-  const q = query(collection(db, "wordbanks", languageName, "words"), where("level", "==", levelValue), where("theme", "==", themeValue));
+  const q = query(collection(db, "wordbanks", "spanish", "words"), where("level", "==", levelValue), where("theme", "==", themeValue));
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
+  console.log(querySnapshot.size)
+  let returnedSnapshot = querySnapshot.docs.map((doc) => {
+    return doc.data();
   });
+
 
 
   // where("level", "==", levelValue).where("theme", "==", themeValue).where("subtheme", "==", subThemeValue);
@@ -72,5 +74,5 @@ export const executeQuery = async(languageName, levelValue, themeValue) => {
   // });
 
 
-  // return querySnapshot;
+  return returnedSnapshot;
 };

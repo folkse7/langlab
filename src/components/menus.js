@@ -73,14 +73,14 @@ export function ContainedInputs() {
               onChange={(e) => setLevel(e.target.value)}>
         <option value="1">Select Level</option>
         <option value="Standard Level">Standard Level</option>
-        <option value="Ab Initio">Ab Initio</option>
+        <option value="AB initio">Ab Initio</option>
       </select>
       </Grid.Col>
       <Grid.Col span={2}>
       <select id="theme" defaultValue="Select theme"
               onChange={(e) => setTheme(e.target.value)}>
         <option value="1">Select Theme</option>
-        <option value="Idenitites">Identites</option>
+        <option value="Identity">Identities</option>
         <option value="Experiences">Experiences</option>
         <option value="Human Ingenuity">Human Ingenuity</option>
         <option value="Social Organization">Social Organization</option>
