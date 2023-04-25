@@ -73,6 +73,6 @@ export const executeQuery = async(languageName, levelValue, themeValue) => {
   //   console.log(doc.id, " => ", doc.data());
   // });
 
-
+  // print everything in returnedsnapshot
   return returnedSnapshot;
 };
