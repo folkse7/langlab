@@ -62,9 +62,12 @@ const useStyles = createStyles((theme) => ({
 //     },
 // ]
 
-export function TableScrollArea({ data }) {
+export function TableScrollArea({data} ) {
   const { classes, cx } = useStyles();
   
+  console.log("Data is here")
+  console.log(data)
+  console.log("Something random")
   const [scrolled, setScrolled] = useState(false);
   //   const data =  [["Athena Weissnat", "Little - Rippin","Elouise.Prohaska@yahoo.com"]
   // ];
@@ -76,18 +79,20 @@ export function TableScrollArea({ data }) {
   //     </tr>
   //   ));
 
-  const students = [
-    ["French", "English", "Example"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-    ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
-  ];
+  // const students = [
+  //   ["French", "English", "Example"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
+  // ];
+
+  console.log(data)
   return (
     <ScrollArea
       h={300}
@@ -97,10 +102,10 @@ export function TableScrollArea({ data }) {
         <Grid.Col span={2}></Grid.Col>
         <Grid.Col span={8}>
           <Table miw={700} className={classes.pad}>
-            <thead
+            {/* <thead
               className={cx(classes.header, { [classes.scrolled]: scrolled })}
-            >
-              <tr className={classes.fnt}>
+            > */}
+              {/* <tr className={classes.fnt}>
                 {students[0].map((item, index) => {
                   return <th className={classes.fnt}>{item}</th>;
                 })}
@@ -115,9 +120,37 @@ export function TableScrollArea({ data }) {
                     <td className={classes.fnt}>{item[2]}</td>
                   </tr>
                 );
-              })}
-            </tbody>
-          </Table>
+              })} */}
+            {/* </tbody> */}
+            {/* Create name, translate and example columns */}
+            <thead
+              className={cx(classes.header, { [classes.scrolled]: scrolled })}
+            >
+              <tr className={classes.fnt}>
+                <th className={classes.fnt}>
+                  <h3>English</h3>
+                </th>
+                <th className={classes.fnt}>
+                  <h3>Spanish</h3>
+                </th>
+                <th className={classes.fnt}>
+                  <h3>Example</h3>
+                </th>
+              </tr>
+
+{data && data.map((dataObject)=>{
+  return (
+    <tr className={classes.fnt}>
+    <td className={classes.fnt}>{dataObject.word}</td>
+    <td className={classes.fnt}>{dataObject.trans}</td>
+    <td className={classes.fnt}>{dataObject.example}</td>
+  </tr>
+  )
+
+
+})}
+</thead>          
+</Table>
         </Grid.Col>
       </Grid>
     </ScrollArea>
@@ -127,7 +160,7 @@ export function TableScrollArea({ data }) {
   //     ["Name", "Subject", "Marks"],
   //     ["ABC", "Arts", 80],
   //     ["XYZ", "Science", "70"],
-  //   ];
+  //   ];ya
   //   return (
   //     <div>
   //       <table>
