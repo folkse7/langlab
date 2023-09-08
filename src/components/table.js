@@ -35,7 +35,7 @@ const useStyles = createStyles((theme) => ({
   },
 
   pad: {
-    marginTop: 50,
+    marginTop: 1,
   },
 
   fnt: {
@@ -62,12 +62,8 @@ const useStyles = createStyles((theme) => ({
 //     },
 // ]
 
-export function TableScrollArea({data} ) {
+export function TableScrollArea({ data }) {
   const { classes, cx } = useStyles();
-  
-  console.log("Data is here")
-  console.log(data)
-  console.log("Something random")
   const [scrolled, setScrolled] = useState(false);
   //   const data =  [["Athena Weissnat", "Little - Rippin","Elouise.Prohaska@yahoo.com"]
   // ];
@@ -92,97 +88,38 @@ export function TableScrollArea({data} ) {
   //   ["Pourquoi", "Why", "Pourquoi tu fait ça?"],
   // ];
 
-  console.log(data)
   return (
-    <ScrollArea
-      h={300}
-      onScrollPositionChange={({ y }) => setScrolled(y !== 0)}
-    >
-      <Grid>
-        <Grid.Col span={2}></Grid.Col>
-        <Grid.Col span={8}>
-          <Table miw={700} className={classes.pad}>
-            {/* <thead
-              className={cx(classes.header, { [classes.scrolled]: scrolled })}
-            > */}
-              {/* <tr className={classes.fnt}>
-                {students[0].map((item, index) => {
-                  return <th className={classes.fnt}>{item}</th>;
-                })}
-              </tr>
-            </thead>
-            <tbody>
-              {students.slice(1, students.length).map((item, index) => {
+    <Grid style={{ display: "flex", justifyContent: "center" }}>
+      {/* <Grid.Col span={2}></Grid.Col> */}
+      <Grid.Col span={8}>
+        <Table miw={700} className={classes.pad}>
+          <thead>
+            <tr className={classes.fnt}>
+              <th className={classes.fnt}>
+                <h3 style={{ textTransform: "capitalize" }}>{data?.lang}</h3>
+              </th>
+              <th className={classes.fnt}>
+                <h3>English</h3>
+              </th>
+              <th className={classes.fnt}>
+                <h3>Example</h3>
+              </th>
+            </tr>
+
+            {data &&
+              data?.list?.length > 0 &&
+              data?.list.map((dataObject, index) => {
                 return (
-                  <tr className={classes.fnt}>
-                    <td className={classes.fnt}>{item[0]}</td>
-                    <td className={classes.fnt}>{item[1]}</td>
-                    <td className={classes.fnt}>{item[2]}</td>
+                  <tr key={index} className={classes.fnt}>
+                    <td className={classes.fnt}>{dataObject.word}</td>
+                    <td className={classes.fnt}>{dataObject.trans}</td>
+                    <td className={classes.fnt}>{dataObject.example}</td>
                   </tr>
                 );
-              })} */}
-            {/* </tbody> */}
-            {/* Create name, translate and example columns */}
-            <thead
-              className={cx(classes.header, { [classes.scrolled]: scrolled })}
-            >
-              <tr className={classes.fnt}>
-                <th className={classes.fnt}>
-                  <h3>English</h3>
-                </th>
-                <th className={classes.fnt}>
-                  <h3>Spanish</h3>
-                </th>
-                <th className={classes.fnt}>
-                  <h3>Example</h3>
-                </th>
-              </tr>
-
-{data && data.map((dataObject)=>{
-  return (
-    <tr className={classes.fnt}>
-    <td className={classes.fnt}>{dataObject.word}</td>
-    <td className={classes.fnt}>{dataObject.trans}</td>
-    <td className={classes.fnt}>{dataObject.example}</td>
-  </tr>
-  )
-
-
-})}
-</thead>          
-</Table>
-        </Grid.Col>
-      </Grid>
-    </ScrollArea>
+              })}
+          </thead>
+        </Table>
+      </Grid.Col>
+    </Grid>
   );
-
-  // const students = [
-  //     ["Name", "Subject", "Marks"],
-  //     ["ABC", "Arts", 80],
-  //     ["XYZ", "Science", "70"],
-  //   ];ya
-  //   return (
-  //     <div>
-  //       <table>
-  //         <thead>
-  //           <tr>
-  //             {students[0].map((item, index) => {
-  //               return <th>{item}</th>;
-  //             })}
-  //           </tr>
-  //         </thead>
-  //         <tbody>
-  //           {students.slice(1, students.length).map((item, index) => {
-  //             return (
-  //               <tr>
-  //                 <td>{item[0]}</td>
-  //                 <td>{item[1]}</td>
-  //                 <td>{item[2]}</td>
-  //               </tr>
-  //             );
-  //           })}
-  //         </tbody>
-  //       </table>
-  //     </div>
-  //   );
 }

@@ -8,7 +8,13 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 
-import { getFirestore, query, collection, getDocs, where } from "firebase/firestore";
+import {
+  getFirestore,
+  query,
+  collection,
+  getDocs,
+  where,
+} from "firebase/firestore";
 // Initiate the db
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -39,40 +45,28 @@ export const signInWithGoogle = () => {
   const provider = new GoogleAuthProvider();
   signInWithPopup(auth, provider)
     .then((result) => {
-      // ...
+      localStorage.setItem("currentUser", JSON.stringify(result.user));
     })
     .catch((error) => {});
 };
 
-export const executeQuery = async(languageName, levelValue, themeValue) => {
-  console.log(languageName, levelValue, themeValue)
-  // Query in the languageName collection(a sub collection of maincollection) for all words with the levelValue, themeValue and subThemeValue
-  // collection(db, "wordbanks", "spanish", "words").where("level", "==", levelValue).where("theme", "==", themeValue).where("subtheme", "==", subThemeValue).get().then(
-  //   (querySnapshot) => {
-  //     querySnapshot.forEach((doc) => {
-  //       console.log(doc.id, " => ", doc.data());
-  //     });
-  //   }
-  // )
-  const q = query(collection(db, "wordbanks", "spanish", "words"), where("level", "==", levelValue), where("theme", "==", themeValue));
+export const executeQuery = async (languageName, levelValue, themeValue) => {
+  const filters = [];
+  if (levelValue) {
+    filters.push(where("level", "==", levelValue));
+  }
+  if (themeValue) {
+    filters.push(where("theme", "==", themeValue));
+  }
+  const q =
+    filters.length > 0
+      ? query(collection(db, "wordbanks", languageName, "words"), ...filters)
+      : collection(db, "wordbanks", languageName, "words");
+
   const querySnapshot = await getDocs(q);
-  console.log(querySnapshot.size)
+
   let returnedSnapshot = querySnapshot.docs.map((doc) => {
     return doc.data();
   });
-
-
-
-  // where("level", "==", levelValue).where("theme", "==", themeValue).where("subtheme", "==", subThemeValue);
-
-
-
-  // const querySnapshot = getDocs(query);
-  // (await querySnapshot).forEach((doc) => {
-  //   // doc.data() is never undefined for query doc snapshots
-  //   console.log(doc.id, " => ", doc.data());
-  // });
-
-  // print everything in returnedsnapshot
   return returnedSnapshot;
 };
