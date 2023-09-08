@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import logo from "./logo.png";
 import { auth, signInWithGoogle } from "../firebase";
 import { onAuthStateChanged } from "firebase/auth";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const HEADER_HEIGHT = rem(60);
 

@@ -23,10 +23,10 @@ const useStyles = createStyles((theme) => ({
   title: {
     fontFamily: `Greycliff CF, ${theme.fontFamily}`,
     fontSize: rem(30),
-    fontWeight: 400,
+    fontWeight: 700,
     lineHeight: 1.1,
     margin: 0,
-    padding: 50,
+    padding: 30,
     color: theme.colorScheme === "dark" ? theme.white : theme.black,
 
     [theme.fn.smallerThan("sm")]: {
@@ -39,16 +39,20 @@ export function ContainedInputs(
   // Take input of data
   { setData }
 ) {
-  const [lang, setLang] = useState();
-  const [level, setLevel] = useState();
-  const [theme, setTheme] = useState();
-  const [docs, setDocs] = useState([]);
+  const [lang, setLang] = useState("");
+  const [level, setLevel] = useState("");
+  const [theme, setTheme] = useState("");
   // Use effect
   useEffect(() => {
-    console.log(lang, level, theme);
-    executeQuery(lang, level, theme).then((docCount) => {
-      setData(docCount);
-    });
+    if (lang) {
+      executeQuery(lang, level, theme).then((docCount) => {
+        const data = {
+          list: docCount,
+          lang: lang,
+        };
+        setData(data);
+      });
+    }
   }, [lang, level, theme]);
 
   const { classes } = useStyles();
@@ -58,24 +62,26 @@ export function ContainedInputs(
         order={2}
         size="h1"
         sx={(theme) => ({ fontFamily: `Greycliff CF, ${theme.fontFamily}` })}
-        weight={300}
         align="center"
         className={classes.title}
       >
         Select a language, level, and theme to generate the corresponding
-        wordbank:
+        wordbank
       </Title>
-      <Grid>
-        <Grid.Col span={3}></Grid.Col>
+      <Grid style={{ display: "flex", justifyContent: "center" }}>
         <Grid.Col span={2}>
           <select
             id="language"
             defaultValue="Select language"
+            value={lang}
             onChange={(e) => setLang(e.target.value)}
+            style={{ width: "80%" }}
           >
-            <option value="1">Select Language</option>
-            <option value="French">French</option>
-            <option value="Spanish">Spanish</option>
+            <option value="" disabled>
+              Select Language
+            </option>
+            <option value="french">French</option>
+            <option value="spanish">Spanish</option>
           </select>
         </Grid.Col>
         <Grid.Col span={2}>
@@ -83,8 +89,11 @@ export function ContainedInputs(
             id="level"
             defaultValue="Select level"
             onChange={(e) => setLevel(e.target.value)}
+            style={{ width: "80%" }}
           >
-            <option value="1">Select Level</option>
+            <option value="" disabled>
+              Select Level
+            </option>
             <option value="Standard Level">Standard Level</option>
             <option value="AB initio">Ab Initio</option>
           </select>
@@ -94,8 +103,11 @@ export function ContainedInputs(
             id="theme"
             defaultValue="Select theme"
             onChange={(e) => setTheme(e.target.value)}
+            style={{ width: "80%" }}
           >
-            <option value="1">Select Theme</option>
+            <option value="" disabled>
+              Select Theme
+            </option>
             <option value="Identity">Identities</option>
             <option value="Experiences">Experiences</option>
             <option value="Human Ingenuity">Human Ingenuity</option>

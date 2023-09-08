@@ -4,7 +4,7 @@ import { GetInTouchSimple } from "./contact";
 import { OurStory } from "./story";
 import { FooterSocial } from "./footer";
 import { FeaturesTitle } from "./features";
-
+import { ToastContainer } from "react-toastify";
 export default function Homepage() {
   return (
     <>
@@ -17,6 +17,7 @@ export default function Homepage() {
       >
         {" "}
       </HeaderAction>{" "}
+      <ToastContainer></ToastContainer>
       <HeroTitle></HeroTitle>
       <FeaturesTitle></FeaturesTitle>
       <OurStory></OurStory>
